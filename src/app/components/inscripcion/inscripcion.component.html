@@ -1,1 +1,71 @@
 <p>inscripcion works!</p>
+<section class="contenedor-formulario">
+  <h2>Formulario de Inscripción</h2>
+  <form [formGroup]="formInscripcion" (ngSubmit)="enviarSolicitud()">
+
+    <div class="campo">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" type="text" formControlName="nombre">
+      @if (formInscripcion.controls.nombre.invalid && formInscripcion.controls.nombre.touched) {
+        <small class="error">Ingrese un nombre válido (mínimo 3 caracteres).</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="apellido">Apellido</label>
+      <input id="apellido" type="text" formControlName="apellido">
+      @if (formInscripcion.controls.apellido.invalid && formInscripcion.controls.apellido.touched) {
+        <small class="error">Ingrese un apellido válido (mínimo 3 caracteres).</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="correo">Correo Electrónico</label>
+      <input id="correo" type="email" formControlName="correo">
+      @if (formInscripcion.controls.correo.invalid && formInscripcion.controls.correo.touched) {
+        <small class="error">Ingrese un correo electrónico válido.</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="carrera">Carrera o Programa</label>
+      <input id="carrera" type="text" formControlName="carrera">
+      @if (formInscripcion.controls.carrera.invalid && formInscripcion.controls.carrera.touched) {
+        <small class="error">Este campo es obligatorio.</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="actividad">Actividad</label>
+      <select id="actividad" formControlName="actividad">
+        <option value="">Seleccione una opción</option>
+        <option value="Programación Web">Taller de Programación Web</option>
+        <option value="Robótica">Taller de Robótica e IoT</option>
+        <option value="Debate">Club de Debate y Oratoria</option>
+        <option value="IA">Seminario de Inteligencia Artificial</option>
+      </select>
+      @if (formInscripcion.controls.actividad.invalid && formInscripcion.controls.actividad.touched) {
+        <small class="error">Debe seleccionar una actividad.</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="jornada">Jornada</label>
+      <select id="jornada" formControlName="jornada">
+        <option value="">Seleccione una jornada</option>
+        <option value="Diurna">Diurna</option>
+        <option value="Vespertina">Vespertina</option>
+      </select>
+      @if (formInscripcion.controls.jornada.invalid && formInscripcion.controls.jornada.touched) {
+        <small class="error">Debe seleccionar una jornada.</small>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="comentario">Comentario (Opcional)</label>
+      <textarea id="comentario" rows="3" formControlName="comentario"></textarea>
+    </div>
+
+    <button type="submit">Enviar Solicitud</button>
+  </form>
+</section>
